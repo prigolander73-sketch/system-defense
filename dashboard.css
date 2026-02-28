@@ -1,0 +1,206 @@
+/* Dashboard specific styles */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+/* Transaction Actions */
+.transaction-actions {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+tr:hover .transaction-actions {
+    opacity: 1;
+}
+
+/* Budget Alert Badge */
+.budget-alert {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Card hover effects */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* Form focus states */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Button transitions */
+button {
+    transition: all 0.2s;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Table styles */
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+}
+
+tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Chart containers */
+canvas {
+    max-height: 100%;
+    width: 100% !important;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Empty state */
+#emptyState {
+    text-align: center;
+    padding: 2rem;
+    color: #6b7280;
+}
+
+/* Progress bars */
+.bg-gray-200 {
+    background-color: #e5e7eb;
+}
+
+/* Status colors */
+.text-green-600 { color: #059669; }
+.text-red-600 { color: #dc2626; }
+.text-yellow-600 { color: #d97706; }
+.text-blue-600 { color: #2563eb; }
+.text-purple-600 { color: #7c3aed; }
+
+.bg-green-50 { background-color: #ecfdf5; }
+.bg-red-50 { background-color: #fef2f2; }
+.bg-yellow-50 { background-color: #fffbeb; }
+.bg-blue-50 { background-color: #eff6ff; }
+.bg-purple-50 { background-color: #f5f3ff; }
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 500;
+    z-index: 1000;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.notification.info {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.notification.warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-cols-4,
+    .grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .tab-btn {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        font-size: 0.875rem;
+    }
+}
