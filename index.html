@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinoy Budget Tracker - Login</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Notification Container -->
+    <div id="notification" class="notification"></div>
+
+    <div class="flex h-screen">
+        <!-- LEFT: ONE BIG ALIVE BUNNY -->
+        <div id="left" class="w-1/2 bg-gradient-to-br from-pink-50 via-rose-50 to-emerald-50 flex items-center justify-center relative overflow-hidden">
+            <div class="char-group">
+                <div id="bunny-wrapper">
+                    <!-- Ears -->
+                    <div class="bunny-ear left">
+                        <div class="inner-ear"></div>
+                    </div>
+                    <div class="bunny-ear right">
+                        <div class="inner-ear"></div>
+                    </div>
+                    <!-- Head -->
+                    <div class="bunny-head">
+                        <!-- Flower -->
+                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 text-7xl drop-shadow-md">🌼</div>
+                       
+                        <!-- Eyes -->
+                        <div class="eye left">
+                            <div class="pupil" id="p1"></div>
+                            <div class="eyelid" id="lid1"></div>
+                        </div>
+                        <div class="eye right">
+                            <div class="pupil" id="p2"></div>
+                            <div class="eyelid" id="lid2"></div>
+                        </div>
+                        <!-- Nose + Mouth + Blush -->
+                        <div class="nose"></div>
+                        <div class="mouth"></div>
+                        <div class="blush left"></div>
+                        <div class="blush right"></div>
+                    </div>
+                    <!-- Body -->
+                    <div class="bunny-body" id="bunny-body"></div>
+                    <!-- Tail -->
+                    <div class="tail"></div>
+                    <!-- Paws -->
+                    <div class="paws">
+                        <div class="paw"></div>
+                        <div class="paw"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Login Form -->
+        <div class="w-1/2 bg-white flex items-center justify-center p-10">
+            <div class="w-full max-w-md">
+                <div class="flex justify-end mb-10">
+                    <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-emerald-500 rounded-3xl flex items-center justify-center text-white text-4xl shadow-inner">🐰</div>
+                </div>
+                <h1 class="text-5xl font-bold tracking-tighter mb-1 text-zinc-900">Welcome back!</h1>
+                <p class="text-zinc-500 text-xl">Your bunny is waiting for you 💕</p>
+                
+                <!-- Login/Register Tabs -->
+                <div class="flex space-x-4 mt-6 mb-6">
+                    <button onclick="switchAuthTab('login')" id="loginTab" class="text-lg font-medium text-pink-600 border-b-2 border-pink-600 pb-1">Log In</button>
+                    <button onclick="switchAuthTab('register')" id="registerTab" class="text-lg font-medium text-gray-400 border-b-2 border-transparent pb-1">Sign Up</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-7">
+                    <div>
+                        <label class="block text-sm font-medium text-zinc-600 mb-2">Email / Username</label>
+                        <input type="text" id="loginEmail" required
+                               class="w-full px-6 py-5 bg-zinc-100 rounded-3xl text-lg outline-none focus:ring-4 focus:ring-pink-300 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-zinc-600 mb-2">Password</label>
+                        <div class="relative">
+                            <input type="password" id="loginPassword" required
+                                   class="w-full px-6 py-5 bg-zinc-100 rounded-3xl text-lg outline-none focus:ring-4 focus:ring-pink-300 transition">
+                            <button type="button" onclick="togglePassword('loginPassword', this)"
+                                    class="absolute right-6 top-1/2 -translate-y-1/2 text-2xl text-zinc-400 hover:text-pink-600">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="remember" class="w-5 h-5 accent-pink-600">
+                            Remember for 30 days
+                        </label>
+                        <a href="#" onclick="showForgotPassword()" class="text-zinc-500 hover:text-pink-600">Forgot password?</a>
+                    </div>
+                    <button type="submit"
+                            class="w-full py-5 bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-bold text-2xl rounded-3xl shadow-xl hover:brightness-110 transition active:scale-95">
+                        Log in
+                    </button>
+                </form>
+
+                <!-- Register Form (Hidden by default) -->
+                <form id="registerForm" class="space-y-5 hidden">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-zinc-600 mb-2">First Name</label>
+                            <input type="text" id="regFirstName" required
+                                   class="w-full px-4 py-3 bg-zinc-100 rounded-2xl text-lg outline-none focus:ring-4 focus:ring-pink-300 transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-zinc-600 mb-2">Last Name</label>
+                            <input type="text" id="regLastName" required
+                                   class="w-full px-4 py-3 bg-zinc-100 rounded-2xl text-lg outline-none focus:ring-4 focus:ring-pink-300 transition">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-zinc-600 mb-2">Email</label>
+                        <input type="email" id="regEmail" required
+                               class="w-full px-6 py-4 bg-zinc-100 rounded-3xl text-lg outline-none focus:ring-4 focus:ring-pink-300 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-zinc-600 mb-2">Password</label>
+                        <div class="relative">
+                            <input type="password" id="regPassword" required minlength="6"
+                                   class="w-full px-6 py-4 bg-zinc-100 rounded-3xl text-lg outline-none focus:ring-4 focus:ring-pink-300 transition">
+                            <button type="button" onclick="togglePassword('regPassword', this)"
+                                    class="absolute right-6 top-1/2 -translate-y-1/2 text-2xl text-zinc-400 hover:text-pink-600">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">Minimum 6 characters</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-zinc-600 mb-2">Confirm Password</label>
+                        <input type="password" id="regConfirmPassword" required
+                               class="w-full px-6 py-4 bg-zinc-100 rounded-3xl text-lg outline-none focus:ring-4 focus:ring-pink-300 transition">
+                    </div>
+                    <button type="submit"
+                            class="w-full py-4 bg-gradient-to-r from-pink-500 to-emerald-500 text-white font-bold text-xl rounded-3xl shadow-xl hover:brightness-110 transition active:scale-95">
+                        Create Account
+                    </button>
+                </form>
+
+                <div class="flex items-center my-8 gap-4">
+                    <div class="h-px flex-1 bg-zinc-200"></div>
+                    <span class="text-zinc-400 text-sm font-medium">OR</span>
+                    <div class="h-px flex-1 bg-zinc-200"></div>
+                </div>
+                <button onclick="fakeGoogleLogin()"
+                        class="w-full py-5 border border-zinc-300 rounded-3xl flex items-center justify-center gap-3 hover:bg-zinc-50 transition">
+                    <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_64dp.png" class="w-6" alt="G">
+                    <span class="font-medium text-zinc-700">Continue with Google</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+        <div class="bg-white rounded-3xl px-12 py-10 text-center max-w-xs w-full shadow-2xl">
+            <div class="text-8xl mb-6">🐰💖</div>
+            <h2 class="text-4xl font-bold">Yay! Welcome back!</h2>
+            <p class="text-zinc-500 mt-3 mb-8">Your bunny is doing the happiest zoomies ever! ✨</p>
+            <button onclick="closeModal()"
+                    class="w-full py-5 bg-gradient-to-r from-pink-500 to-emerald-500 text-white rounded-3xl font-bold text-xl">
+                Continue
+            </button>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
